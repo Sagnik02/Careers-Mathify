@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, request
 from database import load_jobs_from_db, load_job_from_db, add_application_to_db
 
 app = Flask(__name__)
@@ -8,6 +8,11 @@ app = Flask(__name__)
 def mathify():
   jobs = load_jobs_from_db()
   return render_template('home.html', jobs=jobs)
+
+
+@app.route("/about")
+def about():
+  return render_template('about.html')
 
 
 @app.route("/job/<id>")
